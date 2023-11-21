@@ -91,7 +91,6 @@ deploy@icy-frost-7628:~$ cd msm-gui-demo/current/
 The `<app-name>/current` folder contains all source code, and you can do things like:
 
 ![](/assets/hatchbox-ssh-sample-data.png)
-{: .bleed-full }
 
 if you need to manually reset the sample data outside of a cron job run.
 
