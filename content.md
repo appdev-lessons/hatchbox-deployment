@@ -20,38 +20,38 @@ You can use our Rails 7 template as a starting point: [github.com/appdev-project
 
 Once you have a developed app in the [github.com/matchthetarget](https://github.com/matchthetarget) organization, here are the steps to deploy:
 
-1. Login to the "firstdraft" team and visit [https://app.hatchbox.io/apps](https://app.hatchbox.io/apps) and click on "New App"
+Login to the "firstdraft" team and visit [https://app.hatchbox.io/apps](https://app.hatchbox.io/apps) and click on "New App"
 
-   ![](/assets/hatchbox-new-app.png)
-   {: .bleed-full }
+![](/assets/hatchbox-new-app.png)
+{: .bleed-full }
 
-2. The cluster should be "matchthetarget (digitalocean)" and the name should match the name of the repo. Then "Create App".
+The cluster should be "matchthetarget (digitalocean)" and the name should match the name of the repo. Then "Create App".
 
-   ![](/assets/hatchbox-new-app-name.png)
-   {: .bleed-full }
+![](/assets/hatchbox-new-app-name.png)
+{: .bleed-full }
 
-3. The first step on the new app dashboard in the "Repository" tab is to select "Matchthetarget (Github App)" from the Git host dropdown, and then provide the path to the app in the organization (e.g. `matchthetarget/<my-repo-name>`). Then "Save Changes".
+The first step on the new app dashboard in the "Repository" tab is to select "Matchthetarget (Github App)" from the Git host dropdown, and then provide the path to the app in the organization (e.g. `matchthetarget/<my-repo-name>`). Then "Save Changes".
 
-   ![](/assets/hatchbox-new-app-repo-connect.png)
-   {: .bleed-full }
+![](/assets/hatchbox-new-app-repo-connect.png)
+{: .bleed-full }
 
-4. The Save will redirect you to the "Dashboard" tab, but you should go back to the "Repository" tab and scroll down to "Automatic Deploys" and click "Enable automatic deploys" so that pushes to the repo will trigger new deployments.
+The Save will redirect you to the "Dashboard" tab, but you should go back to the "Repository" tab and scroll down to "Automatic Deploys" and click "Enable automatic deploys" so that pushes to the repo will trigger new deployments.
 
-5. _If_ the app is database-backed, then visit the "Databases" tab and click the "New Postgresql" button. That's all you need to create and connect the database. _If_ the app is _NOT_ database-backed, then you should visit the "Environment" tab and add this ENV variable: `HATCHBOX_SKIP_MIGRATE=1` ([source](https://hatchbox.relationkit.io/articles/42-how-does-hatchbox-run-rails-migrations)).
+_If_ the app is database-backed, then visit the "Databases" tab and click the "New Postgresql" button. That's all you need to create and connect the database. _If_ the app is _NOT_ database-backed, then you should visit the "Environment" tab and add this ENV variable: `HATCHBOX_SKIP_MIGRATE=1` ([source](https://hatchbox.relationkit.io/articles/42-how-does-hatchbox-run-rails-migrations)).
 
-6. Add any other ENV variables that your app needs in the "Environment" tab.
+Add any other ENV variables that your app needs in the "Environment" tab.
 
-7. _If_ the app has a cron job that should run regularly, go to the "Cron Jobs" tab and "Add Cron Job". Here is an example for adding an hourly `sample_data` task (**Note:** the double quotes on `"sample_data"` were found to be necessary):
+_If_ the app has a cron job that should run regularly, go to the "Cron Jobs" tab and "Add Cron Job". Here is an example for adding an hourly `sample_data` task (**Note:** the double quotes on `"sample_data"` were found to be necessary):
 
-   ![](/assets/hatchbox-new-app-cron-job.png)
-   {: .bleed-full }
+![](/assets/hatchbox-new-app-cron-job.png)
+{: .bleed-full }
 
-8. In the "Domains & SSL" tab, add the domain that you want to deploy the target to. You will then need to visit your DNS registrar and add an `A` record pointing to the IP of the Digital Ocean server: `146.190.209.166`
+In the "Domains & SSL" tab, add the domain that you want to deploy the target to. You will then need to visit your DNS registrar and add an `A` record pointing to the IP of the Digital Ocean server: `146.190.209.166`
 
-   ![](/assets/hatchbox-new-app-add-domain.png)
-   {: .bleed-full }
+![](/assets/hatchbox-new-app-add-domain.png)
+{: .bleed-full }
 
-9. You are now ready to "Deploy" the app. Click on the top right button for "Deploy", which can be found on all tabs in the dashboard. You can monitor the deployment logs in the "Activity" tab. When the app is deployed you can "View App" (also in the top right portion of the dashboard) at a designated Hatchbox URL, and your app will also shortly be live at the selected domain from the previous step. Subsequent deploys will be automatic on repo pushes if you selected that option in the "Repository" tab.
+You are now ready to "Deploy" the app. Click on the top right button for "Deploy", which can be found on all tabs in the dashboard. You can monitor the deployment logs in the "Activity" tab. When the app is deployed you can "View App" (also in the top right portion of the dashboard) at a designated Hatchbox URL, and your app will also shortly be live at the selected domain from the previous step. Subsequent deploys will be automatic on repo pushes if you selected that option in the "Repository" tab.
 
 ## Manage Digital Ocean
 
